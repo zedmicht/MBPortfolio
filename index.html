@@ -192,45 +192,6 @@
   .scroll-cta svg{transition:transform .2s ease;}
   .scroll-cta:hover svg{transform:translateY(2px);}
 
-  /* ---- cover photo ---- */
-  .cover-photo-col{
-    position:relative;
-    width:260px;
-    transition:width .35s cubic-bezier(.4,0,.2,1), opacity .3s ease;
-  }
-  .cover-photo-col.collapsed{width:0; opacity:0; pointer-events:none;}
-  .cover-photo-frame{
-    width:260px; height:320px; border-radius:8px; overflow:hidden;
-    border:1px solid var(--line); background:var(--panel); flex-shrink:0;
-  }
-  .cover-photo-frame img{width:100%; height:100%; object-fit:cover; display:block;}
-  .photo-toggle{
-    position:absolute; top:-14px; right:-14px;
-    width:32px; height:32px; border-radius:50%;
-    background:var(--panel); border:1px solid var(--line); color:var(--paper);
-    display:flex; align-items:center; justify-content:center; cursor:pointer;
-    transition:all .2s ease; z-index:2;
-  }
-  .photo-toggle:hover{border-color:var(--signal); color:var(--signal);}
-  .photo-toggle svg{transition:transform .3s ease;}
-  .photo-toggle.is-collapsed svg{transform:rotate(180deg);}
-  .photo-toggle-standalone{
-    position:absolute; top:30px; right:30px;
-    width:32px; height:32px; border-radius:50%;
-    background:var(--panel); border:1px solid var(--line); color:var(--paper);
-    display:none; align-items:center; justify-content:center; cursor:pointer;
-    transition:all .2s ease; z-index:2;
-  }
-  .photo-toggle-standalone:hover{border-color:var(--signal); color:var(--signal);}
-  .photo-toggle-standalone.show{display:flex;}
-
-  @media (max-width:900px){
-    .cover-grid{grid-template-columns:1fr; gap:32px;}
-    .cover-photo-col{width:180px; order:-1;}
-    .cover-photo-col.collapsed{width:0; height:0;}
-    .cover-photo-frame{width:180px; height:220px;}
-  }
-
   @media (max-width:820px){
     .cover h1{font-size:44px;}
     .cover-bio{font-size:15px;}
@@ -392,42 +353,26 @@
 
 <section class="cover">
   <div class="wrap">
-    <div class="cover-grid">
-      <div class="cover-inner">
-        <div class="eyebrow">Portfolio</div>
-        <h1>Michael Bobe</h1>
-        <div class="cover-role">Operations Lead · Bacolod, Philippines</div>
-        <p class="cover-bio">I run operations for a virtual assistant agency — six years in, managing teams and workflows — and take on freelance work on the side. Along the way I've built most of my own tooling: dashboards, scheduling systems, and single-file apps that replace the manual work nobody wants to keep doing by hand.</p>
-        <div class="cover-contact">
-          <a href="mailto:michaelbobe01@gmail.com">michaelbobe01@gmail.com</a>
-          <a href="https://wa.me/639764871855" target="_blank" rel="noopener">WhatsApp +63 976 487 1855</a>
-        </div>
-        <div class="cover-toc">
-          <div class="toc-label">Inside this portfolio</div>
-          <div class="cover-toc-item"><span class="toc-n">01</span><span>Concierge Team Improvement</span></div>
-          <div class="cover-toc-item"><span class="toc-n">02</span><span>Transition Plan</span></div>
-          <div class="cover-toc-item"><span class="toc-n">03</span><span>SOP Upgrade</span></div>
-        </div>
-        <div style="position:relative; display:inline-block;">
-          <button class="scroll-cta" onclick="document.getElementById('main-content').scrollIntoView({behavior:'smooth'})">
-            View Portfolio
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v9M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+    <div class="cover-inner">
+      <div class="eyebrow">Portfolio</div>
+      <h1>Michael Bobe</h1>
+      <div class="cover-role">Operations Lead · Bacolod, Philippines</div>
+      <p class="cover-bio">I run operations for a virtual assistant agency — six years in, managing teams and workflows — and take on freelance work on the side. Along the way I've built most of my own tooling: dashboards, scheduling systems, and single-file apps that replace the manual work nobody wants to keep doing by hand.</p>
+      <div class="cover-contact">
+        <a href="mailto:michaelbobe01@gmail.com">michaelbobe01@gmail.com</a>
+        <a href="https://wa.me/639764871855" target="_blank" rel="noopener">WhatsApp +63 976 487 1855</a>
       </div>
-
-      <div class="cover-photo-col" id="photoCol">
-        <div class="photo-toggle" id="photoToggle" onclick="togglePhoto()" title="Collapse photo">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 3L4 7l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="cover-photo-frame">
-          <img src="michael-photo.jpg" alt="Michael Bobe">
-        </div>
+      <div class="cover-toc">
+        <div class="toc-label">Inside this portfolio</div>
+        <div class="cover-toc-item"><span class="toc-n">01</span><span>Concierge Team Improvement</span></div>
+        <div class="cover-toc-item"><span class="toc-n">02</span><span>Transition Plan</span></div>
+        <div class="cover-toc-item"><span class="toc-n">03</span><span>SOP Upgrade</span></div>
       </div>
+      <button class="scroll-cta" onclick="document.getElementById('main-content').scrollIntoView({behavior:'smooth'})">
+        View Portfolio
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v9M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
-  </div>
-  <div class="photo-toggle-standalone" id="photoToggleStandalone" onclick="togglePhoto()" title="Show photo">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 </section>
 
@@ -930,16 +875,6 @@
 <footer>Michael Bobe — Operations Lead &amp; Automation Builder</footer>
 
 <script>
-  function togglePhoto(){
-    const col = document.getElementById('photoCol');
-    const toggle = document.getElementById('photoToggle');
-    const standalone = document.getElementById('photoToggleStandalone');
-    const collapsed = col.classList.toggle('collapsed');
-    toggle.classList.toggle('is-collapsed', collapsed);
-    standalone.classList.toggle('show', collapsed);
-    standalone.title = collapsed ? 'Show photo' : 'Collapse photo';
-  }
-
   function setTab(n){
     for(let i=1;i<=3;i++){
       document.getElementById('panel-'+i).style.display = (i===n) ? '' : 'none';
