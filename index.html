@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MB Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312161C'/%3E%3Ctext x='32' y='42' font-family='Space Grotesk, Arial, sans-serif' font-size='26' font-weight='700' fill='%23E8A64C' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -40,6 +41,11 @@
   a{color:inherit;}
 
   /* ---- top tag ---- */
+  .visit-badge{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--muted);
+    letter-spacing:0.04em; margin-left:10px;
+  }
+  .visit-badge b{color:var(--signal); font-weight:600;}
   .topbar{
     display:flex; justify-content:space-between; align-items:center;
     padding:26px 0; border-bottom:1px solid var(--line);
@@ -197,6 +203,30 @@
     .cover-bio{font-size:15px;}
   }
 
+  /* ---- service cards (About tab) ---- */
+  .svc{border-left:3px solid var(--signal);}
+  .svc .ticket-tag{color:var(--signal);}
+  .svc ul{margin:0; padding-left:16px; color:var(--muted); font-size:13.5px;}
+  .svc ul li{margin-bottom:4px;}
+  .svc ul li:last-child{margin-bottom:0;}
+
+  /* ---- stack tags (Projects tab) ---- */
+  .stack-tags{display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 28px;}
+  .stack-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.05em;
+    color:var(--muted); border:1px solid var(--line); border-radius:100px;
+    padding:5px 12px; text-transform:uppercase;
+  }
+  .project-block{margin-bottom:56px;}
+  .project-block:last-child{margin-bottom:0;}
+  .project-block h3.proj-title{font-size:22px; margin-bottom:10px; font-family:'Space Grotesk', sans-serif;}
+  .project-block p.proj-desc{color:var(--muted); font-size:15px; max-width:640px; margin-bottom:6px;}
+  .thumb-frame{
+    width:100%; max-width:640px; border:1px solid var(--line); border-radius:8px;
+    overflow:hidden; background:var(--panel); margin:18px 0 24px;
+  }
+  .thumb-frame svg{display:block; width:100%; height:auto;}
+
   /* ---- hero ---- */
   .hero{
     padding:72px 0 64px;
@@ -351,31 +381,6 @@
 </head>
 <body>
 
-<section class="cover">
-  <div class="wrap">
-    <div class="cover-inner">
-      <div class="eyebrow">Portfolio</div>
-      <h1>Michael Bobe</h1>
-      <div class="cover-role">Operations Lead · Bacolod, Philippines</div>
-      <p class="cover-bio">I run operations for a virtual assistant agency — six years in, managing teams and workflows — and take on freelance work on the side. Along the way I've built most of my own tooling: dashboards, scheduling systems, and single-file apps that replace the manual work nobody wants to keep doing by hand.</p>
-      <div class="cover-contact">
-        <a href="mailto:michaelbobe01@gmail.com">michaelbobe01@gmail.com</a>
-        <a href="https://wa.me/639764871855" target="_blank" rel="noopener">WhatsApp +63 976 487 1855</a>
-      </div>
-      <div class="cover-toc">
-        <div class="toc-label">Inside this portfolio</div>
-        <div class="cover-toc-item"><span class="toc-n">01</span><span>Concierge Team Improvement</span></div>
-        <div class="cover-toc-item"><span class="toc-n">02</span><span>Transition Plan</span></div>
-        <div class="cover-toc-item"><span class="toc-n">03</span><span>SOP Upgrade</span></div>
-      </div>
-      <button class="scroll-cta" onclick="document.getElementById('main-content').scrollIntoView({behavior:'smooth'})">
-        View Portfolio
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v9M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
 <div id="main-content">
 
 <div class="wrap">
@@ -391,13 +396,91 @@
 
 <div class="wrap">
   <nav class="tabs">
-    <button class="tab-btn active" onclick="setTab(1)">01 · Concierge Team Improvement</button>
-    <button class="tab-btn" onclick="setTab(2)">02 · Transition Plan</button>
-    <button class="tab-btn" onclick="setTab(3)">03 · SOP Upgrade</button>
+    <button class="tab-btn active" onclick="setTab(1)">01 · About Bobe</button>
+    <button class="tab-btn" onclick="setTab(2)">02 · Concierge Team Improvement</button>
+    <button class="tab-btn" onclick="setTab(3)">03 · Transition Plan</button>
+    <button class="tab-btn" onclick="setTab(4)">04 · SOP Upgrade</button>
+    <button class="tab-btn" onclick="setTab(5)">05 · Foolscap &amp; Work Board</button>
   </nav>
 </div>
 
 <div id="panel-1" class="tab-panel">
+  <div class="wrap">
+    <section class="hero" style="border-bottom:1px solid var(--line); grid-template-columns:1fr;">
+      <div>
+        <div class="eyebrow">About</div>
+        <h1>About Bobe</h1>
+        <p class="lede" style="max-width:680px;">I run operations for a virtual assistant agency — six years in, managing teams and workflows — and take on freelance work on the side. Along the way I've built most of my own tooling: dashboards, scheduling systems, and single-file apps that replace the manual work nobody wants to keep doing by hand.</p>
+        <div class="meta-row">
+          <div class="meta-item"><b>Role</b>Operations Lead</div>
+          <div class="meta-item"><b>Based in</b>Bacolod, Philippines</div>
+          <div class="meta-item"><b>Also</b>Freelancer</div>
+          <div class="meta-item"><b>Builds with</b>Vibe coding</div>
+        </div>
+        <div class="cover-contact" style="margin-top:30px;">
+          <a href="mailto:michaelbobe01@gmail.com">michaelbobe01@gmail.com</a>
+          <a href="https://wa.me/639764871855" target="_blank" rel="noopener">WhatsApp +63 976 487 1855</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section>
+      <div class="sec-head"><span class="sec-num">01</span><h2>Experience</h2></div>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-date">Early Career</div>
+          <h3>Customer Service, QA &amp; Administrative Roles</h3>
+          <p>Started out handling calls, chat, and email support, moved into quality assurance, then into administrative and supervisory work — the foundation for everything since.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">~6 Years</div>
+          <h3>Operations Lead, Virtual Assistant Agency</h3>
+          <p>Manage teams and oversee workflow operations across the agency, including leading the Concierge team through its SLA turnaround from 2022 to 2025.</p>
+        </div>
+        <div class="tl-item end">
+          <div class="tl-date">Ongoing</div>
+          <h3>Freelance Operations &amp; VA Support</h3>
+          <p>Take on freelance client work alongside the agency role — outreach, reporting, and process support.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="border-bottom:none;">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Services Offered</h2></div>
+      <div class="tickets">
+        <div class="ticket svc">
+          <span class="ticket-tag">Administrative</span>
+          <h3>Day-to-day support</h3>
+          <ul>
+            <li>Email management</li>
+            <li>Data entry</li>
+            <li>Customer support</li>
+          </ul>
+        </div>
+        <div class="ticket svc">
+          <span class="ticket-tag">Technical</span>
+          <h3>Technical support</h3>
+          <ul>
+            <li>Technical support</li>
+            <li>Quality assurance</li>
+          </ul>
+        </div>
+        <div class="ticket svc">
+          <span class="ticket-tag">Managerial</span>
+          <h3>Leadership &amp; process</h3>
+          <ul>
+            <li>Operations Lead — improving processes and SOPs</li>
+            <li>Project Manager</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="panel-2" class="tab-panel" style="display:none;">
 
 <div class="wrap">
   <section class="hero" style="border-bottom:1px solid var(--line);">
@@ -570,7 +653,7 @@
 
 </div>
 
-<div id="panel-2" class="tab-panel" style="display:none;">
+<div id="panel-3" class="tab-panel" style="display:none;">
 
 <div class="wrap">
   <section class="hero" style="border-bottom:1px solid var(--line); grid-template-columns:1fr;">
@@ -735,7 +818,7 @@
 
 </div>
 
-<div id="panel-3" class="tab-panel" style="display:none;">
+<div id="panel-4" class="tab-panel" style="display:none;">
 
 <div class="wrap">
   <section class="hero" style="border-bottom:1px solid var(--line); grid-template-columns:1fr;">
@@ -872,17 +955,227 @@
 
 </div>
 
-<footer>Michael Bobe — Operations Lead &amp; Automation Builder</footer>
+<div id="panel-5" class="tab-panel" style="display:none;">
+
+<div class="wrap">
+  <section class="hero" style="border-bottom:1px solid var(--line); grid-template-columns:1fr;">
+    <div>
+      <div class="eyebrow">Side Projects</div>
+      <h1>Built From <span>Scratch</span></h1>
+      <p class="lede" style="max-width:680px;">Outside of work, I build self-contained tools — single-file HTML apps with no server and no framework, just localStorage or IndexedDB doing the heavy lifting. Two I keep coming back to: a project management board and a real-time collaborative notebook.</p>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="project-block">
+      <div class="sec-head"><span class="sec-num">01</span><h3 class="proj-title">Work Board v1.0</h3></div>
+      <p class="proj-desc">A Monday.com-style project management app, built from the ground up as a single HTML file. Started as a basic board and grew — one focused change at a time — into a full multi-board workspace with its own charting, automation, and backup system.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Single-file HTML</span>
+        <span class="stack-tag">IndexedDB</span>
+        <span class="stack-tag">localStorage</span>
+        <span class="stack-tag">JSONBin.io</span>
+      </div>
+
+      <div class="thumb-frame">
+        <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="380" fill="#1A212B"/>
+          <rect x="0" y="0" width="640" height="42" fill="#212836"/>
+          <circle cx="22" cy="21" r="4.5" fill="#C1573E"/>
+          <circle cx="38" cy="21" r="4.5" fill="#E8A64C"/>
+          <circle cx="54" cy="21" r="4.5" fill="#6FCF97"/>
+          <rect x="90" y="11" width="76" height="20" rx="5" fill="#1A212B" stroke="#E8A64C" stroke-width="1"/>
+          <text x="128" y="25" font-family="IBM Plex Mono, monospace" font-size="10" fill="#E8A64C" text-anchor="middle">Board 1</text>
+          <rect x="174" y="11" width="76" height="20" rx="5" fill="none" stroke="#2A3341" stroke-width="1"/>
+          <text x="212" y="25" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8E97A6" text-anchor="middle">Calendar</text>
+          <rect x="258" y="11" width="66" height="20" rx="5" fill="none" stroke="#2A3341" stroke-width="1"/>
+          <text x="291" y="25" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8E97A6" text-anchor="middle">Graph</text>
+
+          <text x="20" y="72" font-family="IBM Plex Mono, monospace" font-size="11" fill="#8E97A6" letter-spacing="1">TO DO</text>
+          <text x="230" y="72" font-family="IBM Plex Mono, monospace" font-size="11" fill="#8E97A6" letter-spacing="1">IN PROGRESS</text>
+          <text x="450" y="72" font-family="IBM Plex Mono, monospace" font-size="11" fill="#8E97A6" letter-spacing="1">DONE</text>
+
+          <rect x="20" y="84" width="190" height="58" rx="6" fill="#212836" stroke="#2A3341"/>
+          <rect x="32" y="96" width="80" height="6" rx="3" fill="#ECE7DD" opacity="0.85"/>
+          <rect x="32" y="110" width="120" height="5" rx="2.5" fill="#8E97A6"/>
+          <rect x="32" y="122" width="46" height="14" rx="7" fill="none" stroke="#6FCF97"/>
+          <text x="55" y="132" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6FCF97" text-anchor="middle">DONE</text>
+
+          <rect x="20" y="152" width="190" height="58" rx="6" fill="#212836" stroke="#2A3341"/>
+          <rect x="32" y="164" width="95" height="6" rx="3" fill="#ECE7DD" opacity="0.85"/>
+          <rect x="32" y="178" width="130" height="5" rx="2.5" fill="#8E97A6"/>
+          <rect x="32" y="190" width="60" height="14" rx="7" fill="none" stroke="#E8A64C"/>
+          <text x="62" y="200" font-family="IBM Plex Mono, monospace" font-size="8" fill="#E8A64C" text-anchor="middle">FORMULA</text>
+
+          <rect x="230" y="84" width="190" height="58" rx="6" fill="#212836" stroke="#2A3341"/>
+          <rect x="242" y="96" width="70" height="6" rx="3" fill="#ECE7DD" opacity="0.85"/>
+          <rect x="242" y="110" width="110" height="5" rx="2.5" fill="#8E97A6"/>
+          <rect x="242" y="122" width="52" height="14" rx="7" fill="none" stroke="#8E97A6"/>
+          <text x="268" y="132" font-family="IBM Plex Mono, monospace" font-size="8" fill="#8E97A6" text-anchor="middle">TODO</text>
+
+          <rect x="230" y="152" width="190" height="58" rx="6" fill="#212836" stroke="#E8A64C" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <rect x="242" y="164" width="88" height="6" rx="3" fill="#ECE7DD" opacity="0.85"/>
+          <rect x="242" y="178" width="100" height="5" rx="2.5" fill="#8E97A6"/>
+
+          <rect x="440" y="84" width="180" height="58" rx="6" fill="#212836" stroke="#2A3341"/>
+          <rect x="452" y="96" width="75" height="6" rx="3" fill="#ECE7DD" opacity="0.6"/>
+          <rect x="452" y="110" width="105" height="5" rx="2.5" fill="#8E97A6" opacity="0.7"/>
+          <rect x="452" y="122" width="50" height="14" rx="7" fill="none" stroke="#6FCF97"/>
+          <text x="477" y="132" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6FCF97" text-anchor="middle">DONE</text>
+
+          <rect x="20" y="260" width="600" height="98" rx="6" fill="#212836" stroke="#2A3341"/>
+          <text x="34" y="280" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8E97A6" letter-spacing="1">SLA TREND</text>
+          <polyline points="40,332 110,320 180,300 250,270 320,280 390,260 460,264 530,255 590,258" fill="none" stroke="#E8A64C" stroke-width="2"/>
+          <line x1="34" y1="292" x2="596" y2="292" stroke="#2A3341" stroke-dasharray="3 3"/>
+        </svg>
+      </div>
+      <div class="chart-note" style="margin-top:-14px; margin-bottom:6px;">Stylized illustration, not a literal screenshot.</div>
+      <div class="protocol">
+        <div class="p-phase">Core</div>
+        <div class="p-row">
+          <div class="p-num">01</div>
+          <div><h3>Multi-board support</h3><p>Manage several boards from one workspace, each with its own columns and views.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">02</div>
+          <div><h3>Calendar &amp; Graph tabs</h3><p>Pure SVG charts and a calendar view, built without any charting library.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">03</div>
+          <div><h3>Drag-and-drop reordering</h3><p>Reorder rows, columns, and boards directly, no separate edit mode.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">04</div>
+          <div><h3>Formula columns</h3><p>An Excel-style formula evaluator for computed columns.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">05</div>
+          <div><h3>Automation actions</h3><p>Rule-based actions that fire on board changes.</p></div>
+        </div>
+
+        <div class="p-phase">Data &amp; Persistence</div>
+        <div class="p-row">
+          <div class="p-num">06</div>
+          <div><h3>Dual local persistence</h3><p>IndexedDB and localStorage working together so data survives reloads and browser quirks alike.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">07</div>
+          <div><h3>Cloud backup via JSONBin.io</h3><p>PIN-protected backup and restore, without needing a real backend.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">08</div>
+          <div><h3>Trash &amp; restore</h3><p>Deleted items sit in a trash bin for 30 days before they're gone for good.</p></div>
+        </div>
+
+        <div class="p-phase">Polish</div>
+        <div class="p-row">
+          <div class="p-num">09</div>
+          <div><h3>Themes &amp; density modes</h3><p>Dark and Matcha themes, plus a density picker for compact or comfortable layouts, all with custom SVG icons.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-block">
+      <div class="sec-head"><span class="sec-num">02</span><h3 class="proj-title">Foolscap</h3></div>
+      <p class="proj-desc">A collaborative single-file HTML notebook, hosted on Netlify, using Liveblocks to sync multiple people writing in the same notebook in real time.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Single-file HTML</span>
+        <span class="stack-tag">Liveblocks</span>
+        <span class="stack-tag">Netlify</span>
+      </div>
+
+      <div class="thumb-frame">
+        <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="380" fill="#1A212B"/>
+          <rect x="0" y="0" width="640" height="42" fill="#212836"/>
+          <text x="22" y="26" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#ECE7DD">Foolscap</text>
+          <circle cx="560" cy="21" r="9" fill="#E8A64C"/>
+          <text x="560" y="24.5" font-family="IBM Plex Mono, monospace" font-size="9" fill="#12161C" text-anchor="middle">MB</text>
+          <circle cx="584" cy="21" r="9" fill="#6FCF97"/>
+          <text x="584" y="24.5" font-family="IBM Plex Mono, monospace" font-size="9" fill="#12161C" text-anchor="middle">R</text>
+          <circle cx="608" cy="21" r="9" fill="#8E97A6"/>
+          <text x="608" y="24.5" font-family="IBM Plex Mono, monospace" font-size="9" fill="#12161C" text-anchor="middle">O</text>
+
+          <rect x="20" y="70" width="600" height="290" rx="8" fill="#212836" stroke="#2A3341"/>
+
+          <rect x="46" y="98" width="220" height="8" rx="4" fill="#ECE7DD" opacity="0.85"/>
+          <rect x="46" y="120" width="480" height="6" rx="3" fill="#8E97A6"/>
+          <rect x="46" y="136" width="440" height="6" rx="3" fill="#8E97A6"/>
+          <rect x="46" y="152" width="500" height="6" rx="3" fill="#8E97A6"/>
+
+          <rect x="40" y="176" width="230" height="120" rx="6" fill="#1A212B" stroke="#2A3341"/>
+          <rect x="52" y="188" width="140" height="70" rx="4" fill="#2A3341"/>
+          <circle cx="122" cy="223" r="16" fill="none" stroke="#8E97A6" stroke-width="1.4"/>
+          <path d="M114 223 l6 6 12 -12" fill="none" stroke="#8E97A6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="52" y="272" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#8E97A6">Pasted screenshot</text>
+
+          <rect x="46" y="220" width="1" height="0"/>
+          <rect x="290" y="188" width="330" height="6" rx="3" fill="#8E97A6"/>
+          <rect x="290" y="204" width="300" height="6" rx="3" fill="#8E97A6"/>
+          <rect x="290" y="220" width="200" height="6" rx="3" fill="#8E97A6"/>
+
+          <rect x="298" y="197" width="2" height="18" fill="#6FCF97"/>
+          <rect x="298" y="184" width="46" height="14" rx="4" fill="#6FCF97"/>
+          <text x="321" y="194" font-family="IBM Plex Mono, monospace" font-size="8" fill="#12161C" text-anchor="middle">Ray</text>
+
+          <circle cx="440" cy="223" r="11" fill="#212836" stroke="#E8A64C"/>
+          <text x="440" y="227" font-family="sans-serif" font-size="12" text-anchor="middle">👍</text>
+
+          <rect x="46" y="316" width="180" height="6" rx="3" fill="#8E97A6" opacity="0.6"/>
+          <rect x="46" y="330" width="130" height="6" rx="3" fill="#8E97A6" opacity="0.6"/>
+
+          <rect x="20" y="70" width="6" height="290" fill="#12161C" opacity="0"/>
+          <circle cx="600" cy="345" r="5" fill="#6FCF97"/>
+          <text x="590" y="349" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#6FCF97" text-anchor="end">Synced</text>
+        </svg>
+      </div>
+      <div class="chart-note" style="margin-top:-14px; margin-bottom:6px;">Stylized illustration, not a literal screenshot.</div>
+      <div class="protocol">
+        <div class="p-row" style="border-top:1px solid var(--line);">
+          <div class="p-num">01</div>
+          <div><h3>Live presence indicators</h3><p>See who else is in the notebook and where they're working, in real time.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">02</div>
+          <div><h3>Emoji reactions</h3><p>Quick, lightweight ways to respond to what someone's written without breaking their flow.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">03</div>
+          <div><h3>Screenshot paste</h3><p>Paste a screenshot straight into a note instead of juggling a separate upload step.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">04</div>
+          <div><h3>Trash system</h3><p>The same safety net as Work Board — nothing's gone for good by accident.</p></div>
+        </div>
+        <div class="p-row">
+          <div class="p-num">05</div>
+          <div><h3>Offline detection</h3><p>Flags when a connection drops, so no one loses track of whether their changes actually synced.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section class="closing" style="border-bottom:none;">
+    <h2>Same building style as everything else here: no framework, no server, ship something that works, then keep improving it one round at a time.</h2>
+  </section>
+</div>
+
+</div>
+
+<footer>Michael Bobe — Operations Lead <span class="visit-badge" id="visitBadge">· <b>—</b> visits</span></footer>
 
 <script>
   function setTab(n){
-    for(let i=1;i<=3;i++){
+    for(let i=1;i<=5;i++){
       document.getElementById('panel-'+i).style.display = (i===n) ? '' : 'none';
     }
     document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
       btn.classList.toggle('active', idx === n-1);
     });
-    window.scrollTo({top:0, behavior:'instant'});
   }
 
   function setGauge(state){
@@ -908,6 +1201,21 @@
       btnA.classList.add('active'); btnB.classList.remove('active');
     }
   }
+</script>
+
+<script>
+  (function(){
+    var el = document.getElementById('visitBadge');
+    if(!el) return;
+    fetch('https://api.countapi.xyz/hit/michaelbobe-mb-portfolio/visits')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        el.innerHTML = '· <b>' + data.value.toLocaleString() + '</b> visits';
+      })
+      .catch(function(){
+        el.style.display = 'none';
+      });
+  })();
 </script>
 
 </div>
